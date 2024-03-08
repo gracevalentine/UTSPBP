@@ -1,0 +1,25 @@
+CREATE TABLE Accounts (
+	id int (5) PRIMARY KEY AUTO_INCREMENT,
+    username varchar (100)
+);
+
+CREATE TABLE Games (
+	id int (5) PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR (100),
+    max_player INT (4)
+);
+
+CREATE TABLE Rooms (
+	id INT (5) PRIMARY KEY AUTO_INCREMENT,
+    room_name VARCHAR (100),
+    id_game INT (5),
+    FOREIGN KEY (id_game) REFERENCES Games(id)
+);
+
+CREATE TABLE Participants (
+	id INT (5) PRIMARY KEY AUTO_INCREMENT,
+    id_room INT (5),
+    id_account INT (5),
+    FOREIGN KEY (id_room) REFERENCES Rooms(id),
+    FOREIGN KEY (id_account) REFERENCES Accounts(id)
+);
